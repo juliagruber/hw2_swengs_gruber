@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-button
+          [matMenuTriggerFor]="plantMenu">Manage</button>
+  <mat-menu #plantMenu="matMenu">
+    <button mat-menu-item routerLink="plant-list">List
+    plants</button>
+    <button mat-menu-item routerLink="plant-form">Create
+      plant</button>
+    <button mat-menu-item routerLink="garden-list">List
+      gardens</button>
+    <button mat-menu-item routerLink="garden-form">Create
+    garden</button>
+  </mat-menu>
+  <app-logout *ngIf="isLoggedIn"></app-logout>
+
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

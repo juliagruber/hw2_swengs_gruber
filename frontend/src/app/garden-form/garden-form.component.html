@@ -1,0 +1,33 @@
+<form [formGroup]="gardenFormGroup" class="garden-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name" required>
+    <mat-hint align="end">The name of the garden</mat-hint>
+    <mat-error *ngIf="gardenFormGroup.controls.name.hasError('nameError')">No Numbers in Name</mat-error>
+    <mat-error *ngIf="gardenFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Size" formControlName="size">
+    <mat-hint align="end">The size of the garden</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Responsible Gardener"
+                formControlName="gardener_name">
+      <mat-option [value]="gardenerOption.id" *ngFor="let
+gardenerOption of gardenerOptions">{{gardenerOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The responsible gardener of the garden</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Location" formControlName="location">
+    <mat-hint align="end">The location of the garden</mat-hint>
+  </mat-form-field>
+  <mat-checkbox formControlName="inUse">in Use</mat-checkbox>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!gardenFormGroup.valid" (click)="createGarden()">
+      <span *ngIf="!gardenFormGroup.controls.id.value">Create</span>
+      <span *ngIf="gardenFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+
+</form>
